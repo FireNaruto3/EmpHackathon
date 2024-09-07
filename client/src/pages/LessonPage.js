@@ -1,11 +1,10 @@
 import React from "react";
 
-
 import {Header} from '../components/header.js'
 import {Footer} from '../components/footer.js'
 
 
-export const PageAbout = () => {
+export const Lessons = () => {
     return(
         <body>
             <Header/>
