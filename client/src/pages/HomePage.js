@@ -15,6 +15,7 @@ const Hero = styled.section`
   color: #333;
   text-align: center;
   white-space: nowrap;
+  height 100%;
 `
 
 const HeroContent = styled.div`

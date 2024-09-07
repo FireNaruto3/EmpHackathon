@@ -1,5 +1,6 @@
 export const INTERNAL_LINKS = {
     HOME: '/',
     LESSONS: '/lessons',
-    NOTFOUND: '/*'
+    NOTFOUND: '/*',
+    LESSONONE: '/LessonOne'
   };
