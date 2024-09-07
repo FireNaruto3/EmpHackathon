@@ -1,5 +1,6 @@
 import React from "react";
 import styled from 'styled-components';
+import { INTERNAL_LINKS } from '../utils/links.ts';
 
 const HeaderContainer = styled.header`
      background: #333;
@@ -25,10 +26,8 @@ export const Header = () => {
        <NavBar>
             <h1 class="logo"><a href="#">logo here</a></h1>
             <ul class="nav-links">
-                <List><a href="">Home</a></List>
-                <List><a href="#">About</a></List>
-                <List><a href="#">Services</a></List>
-                <List><a href="#">Contact</a></List>
+                <List><a href={INTERNAL_LINKS.HOME}>Home</a></List>
+                <List><a href={INTERNAL_LINKS.LESSONS}>Lessons</a></List>
             </ul>
             </NavBar>
     </HeaderContainer>
