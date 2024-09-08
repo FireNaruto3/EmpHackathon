@@ -40,8 +40,8 @@ export const LessonThree = () =>{
           <h2>Choose an Option</h2>
           <Container>
             <Options>
-                <Button href="#">Option 1 </Button>
-                <Button href="#">Option 2 </Button>
+                <Button href="#">Land on Mars </Button>
+                <Button href="#">Don't Land </Button>
                 </Options>
           </Container>
           <Footer/>

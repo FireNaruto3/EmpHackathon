@@ -14,6 +14,10 @@ const MainContainer = styled.div`
 
 // Content sections styles
 const ContentSection = styled.section`
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 500px;
   padding: 3rem 2rem;
   border-bottom: 2px solid #ddd;
   text-align: center;
@@ -62,15 +66,6 @@ export const Lessons = () => {
       <Header />
       <ContentSection>
         <h1>Simulations:</h1>
-      </ContentSection>
-      
-      <ContentSection className="fade04" id="runthrough">
-        <Button href={INTERNAL_LINKS.LESSONONE}>
-          Full Runthrough
-        </Button>
-        <ContentParagraph>
-          Experience the full simulation starting from takeoff to arriving back on Earth.
-        </ContentParagraph>
       </ContentSection>
 
       <ContentSection className="fade08" id="section1">

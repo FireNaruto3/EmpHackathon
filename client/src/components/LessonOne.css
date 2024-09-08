@@ -132,5 +132,16 @@ body, html {
     border-radius: 8px;
     text-align: center;
   }
+  #timerDisplay {
+    position: absolute;
+    top: 25%;
+    left: 47.5%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+  }
   
   

@@ -1,5 +1,5 @@
 {
-  "homepage": "https://FireNaruto3.github.io/EmpHackathon",
+  "homepage": "https://firenaruto3.github.io/EmpHackathon/  ",
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -41,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.10"
   }
 }

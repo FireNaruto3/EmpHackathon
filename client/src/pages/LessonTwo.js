@@ -1,10 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Header } from '../components/header'; 
 import { Footer } from '../components/footer'; 
 import styled, { keyframes } from 'styled-components';
 import { InputBox } from "../components/box"; 
-
-
 
 // Keyframes for animations
 const moveStars = keyframes`
@@ -83,6 +81,10 @@ const Rocket = styled.div`
   animation: ${moveMiddle} 30s linear infinite;
 `;
 
+const informationBox = styled.div`
+  text-align: center; 
+`
+
 const AsteroidButton = styled.button`
   position: absolute;
   bottom: 20px; /* Position at the bottom of the asteroid */
@@ -102,96 +104,123 @@ const AsteroidButton = styled.button`
   }
 `;
 
+const InfoBox = styled.div`
+  position: fixed; /* Ensures the box is always visible and positioned relative to the viewport */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the box by translating back by 50% of its width and height */
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+  color: white;
+  border-radius: 10px;
+  text-align: center;
+  z-index: 1000; /* Ensure it's on the very top layer */
+  display: ${props => (props.show ? 'block' : 'none')}; /* Show or hide based on the 'show' prop */
+`;
 
-let information = [];
 
-
-// Main component
 export const LessonTwo = () => {
-
-  const fetchAsteroids = () => {
-    fetch('http://127.0.0.1:5000/get_asteroid_data', {
-        method: 'GET'
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-    })
-    .then(data => {
-        console.log(data);  // Inspect the structure of the response
-
-        let information = [];
-
-        // Check if 'near_earth_objects' exists and is an object
-        if (data.near_earth_objects && typeof data.near_earth_objects === 'object') {
-            // Iterate over the 'near_earth_objects' object
-            Object.keys(data.near_earth_objects).forEach(date => {
-                const asteroids = data.near_earth_objects[date];
-                
-                // Check if 'asteroids' is an array
-                if (Array.isArray(asteroids)) {
-                    asteroids.forEach(asteroid => {
-                        // Check if the asteroid object has the required properties
-                        if (asteroid.name && asteroid.estimated_diameter && asteroid.estimated_diameter.meters) {
-                            const name = asteroid.name;
-                            const estimatedDiameterMaxMeters = asteroid.estimated_diameter.meters.estimated_diameter_max;
-
-                            information.push({
-                                name: name,
-                                estimated_diameter_max_meters: estimatedDiameterMaxMeters
-                            });
-                        } else {
-                            console.error('Invalid asteroid structure:', asteroid);
-                        }
-                    });
-                } else if (asteroids && typeof asteroids === 'object') {
-                    // Handle the case where `asteroids` is a single object
-                    if (asteroids.name && asteroids.estimated_diameter && asteroids.estimated_diameter.meters) {
-                        const name = asteroids.name;
-                        const estimatedDiameterMaxMeters = asteroids.estimated_diameter.meters.estimated_diameter_max;
-
-                        information.push({
-                            name: name,
-                            estimated_diameter_max_meters: estimatedDiameterMaxMeters
-                        });
-                    } else {
-                        console.error('Invalid asteroid structure:', asteroids);
-                    }
-                } else {
-                    console.error('Unexpected type for asteroids:', asteroids);
-                }
-            });
-        } else {
-            console.error('Invalid structure for near_earth_objects:', data.near_earth_objects);
-        }
-
-        // Output or use the 'information' array as needed
-        console.log(information);  // This will contain all the asteroid names and sizes in meters
-        
-    })
-    .catch(error => console.error('Error:', error));
-};
-
-
-
+  const [information, setInformation] = useState([]);
+  const [showInfo, setShowInfo] = useState(false);
+  let index = 0; 
+  index = Math.floor((Math.random()*information.length)); 
   
-  return (
+
+
+  useEffect(() => {
+    const fetchAsteroids = () => {
+      fetch('http://127.0.0.1:5000/get_asteroid_data', {
+          method: 'GET'
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+      })
+      .then(data => {
+          console.log(data);  // Inspect the structure of the response
+  
+          let fetchedInformation = [];
+  
+          // Check if 'near_earth_objects' exists and is an object
+          if (data.near_earth_objects && typeof data.near_earth_objects === 'object') {
+              // Iterate over the 'near_earth_objects' object
+              Object.keys(data.near_earth_objects).forEach(date => {
+                  const asteroids = data.near_earth_objects[date];
+                  
+                  // Check if 'asteroids' is an array
+                  if (Array.isArray(asteroids)) {
+                      asteroids.forEach(asteroid => {
+                          // Check if the asteroid object has the required properties
+                          if (asteroid.name && asteroid.estimated_diameter && asteroid.estimated_diameter.meters) {
+                              const name = asteroid.name;
+                              const estimatedDiameterMaxMeters = asteroid.estimated_diameter.meters.estimated_diameter_max;
+  
+                              fetchedInformation.push({
+                                  name: name,
+                                  estimated_diameter_max_meters: estimatedDiameterMaxMeters
+                              });
+                          } else {
+                              console.error('Invalid asteroid structure:', asteroid);
+                          }
+                      });
+                  } else if (asteroids && typeof asteroids === 'object') {
+                      // Handle the case where `asteroids` is a single object
+                      if (asteroids.name && asteroids.estimated_diameter && asteroids.estimated_diameter.meters) {
+                          const name = asteroids.name;
+                          const estimatedDiameterMaxMeters = asteroids.estimated_diameter.meters.estimated_diameter_max;
+  
+                          fetchedInformation.push({
+                              name: name,
+                              estimated_diameter_max_meters: estimatedDiameterMaxMeters
+                          });
+                      } else {
+                          console.error('Invalid asteroid structure:', asteroids);
+                      }
+                  } else {
+                      console.error('Unexpected type for asteroids:', asteroids);
+                  }
+              });
+  
+              // Update state with the fetched information
+              setInformation(fetchedInformation);
+
+          } else {
+              console.error('Invalid structure for near_earth_objects:', data.near_earth_objects);
+          }
+          
+          console.log(fetchedInformation)
+      })
+      .catch(error => console.error('Error:', error));
+    };
+    
+    fetchAsteroids()
+
+  }, [])
+
+      
+
+    return (
     <>
       <Header/>
       <Space>
         <Stars />
         <Twinkling />
         <Asteroid />
-
-        
-        <AsteroidButton onClick={fetchAsteroids}>
-          Toggle Info
+        <AsteroidButton onClick={() => setShowInfo((prev) => !prev)} >
+          Find out more about the asteroid!
         </AsteroidButton>
         <Rocket />
+  
       </Space>
-      <InputBox />
+      <informationBox> 
+
+          {showInfo && "Name of the asteroid: " + information[index]["name"] + " Size in meters: " + information[index]["estimated_diameter_max_meters"]}
+
+          {false && information.map((obj) => <p>{obj.name}</p>)} 
+        </informationBox>
+      <InputBox/>
       <Footer />
     </>
   );
