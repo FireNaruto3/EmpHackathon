@@ -39,8 +39,8 @@ export const LessonOne = () => {
     const bar = document.querySelector('#blackBar');
     const rectangle = document.querySelector('#redRectangle');
     const barPosition = bar.getBoundingClientRect().left - rectangle.getBoundingClientRect().left;
-    const greenStart = 0.4 * rectangle.offsetWidth;
-    const greenEnd = 0.6 * rectangle.offsetWidth;
+    const greenStart = 0.01 * rectangle.offsetWidth;
+    const greenEnd = 0.99 * rectangle.offsetWidth;
 
     if (timeLeft > 0) {
       if (barPosition >= greenStart && barPosition <= greenEnd) {
