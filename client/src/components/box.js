@@ -91,7 +91,7 @@ export const InputBox = () => {
 
   return (
     <InputContainer>
-      <Heading>Given the radius of the asteroid and the speed of your ship, decide the angle to turn at. If you get it right, the link taking you to the next page will show up!</Heading>
+      <Heading>Given the radius of the asteroid, decide the angle to turn at. If you get it right, the link taking you to the next page will show up!</Heading>
       <Heading>Angle:</Heading>
       <StyledInput 
         type="number" 
