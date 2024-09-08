@@ -7,6 +7,7 @@ export const PageAbout = () => {
     return(
         <body>
             <Header/>
+            
             <Footer/>
         </body>
     );
