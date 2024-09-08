@@ -4,5 +4,6 @@ export const INTERNAL_LINKS = {
     NOTFOUND: '/*',
     LESSONONE: '/LessonOne',
     LESSONTWO: '/LessonTwo',
-    LESSONTHREE: '/LessonThree'
+    LESSONTHREE: '/LessonThree',
+    CONGRAT: '/congrat'
   };

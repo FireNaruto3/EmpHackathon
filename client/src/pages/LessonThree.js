@@ -32,7 +32,7 @@ export const LessonThree = () => {
 
     const redirectToFinish = () => {
         setPopup(null);
-        window.location.href = INTERNAL_LINKS.HOME; 
+        window.location.href = INTERNAL_LINKS.CONGRAT; 
     }
 
     const containerStyle = {
@@ -140,7 +140,7 @@ export const LessonThree = () => {
                             <button
                                 style={popupButtonStyle('finish')}
                                 onClick={redirectToFinish}
-                                href = {INTERNAL_LINKS.HOME}
+                                href = {INTERNAL_LINKS.CONGRATS}
                             >   
                                 Finish
                             </button>

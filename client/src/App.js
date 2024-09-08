@@ -9,6 +9,7 @@ import {NotFound} from './pages/NotFound'
 import {LessonOne} from './pages/LessonOne'
 import {LessonTwo} from './pages/LessonTwo'
 import {LessonThree} from './pages/LessonThree'
+import { Congratulations } from './pages/Congrat.js';
 
 const Container = styled.div`
  
@@ -82,6 +83,7 @@ function App() {
         <Route path = {INTERNAL_LINKS.LESSONONE} element = {<LessonOne/>} />
         <Route path = {INTERNAL_LINKS.LESSONTWO} element = {<LessonTwo/>} />
         <Route path = {INTERNAL_LINKS.LESSONTHREE} element = {<LessonThree/>} />
+        <Route path = {INTERNAL_LINKS.CONGRAT} element = {<Congratulations/>} />
       </Routes>
       </Container>
     </BrowserRouter>
