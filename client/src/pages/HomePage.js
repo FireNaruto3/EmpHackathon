@@ -88,7 +88,7 @@ export const HomePage = () => {
     <MainContainer>
       <GlobalStyle />
       <Header />
-      <Hero>
+      <Hero className="fade08">
         <HeroContent>
           <h2>The Astronaut's Cycle</h2>
           <p>Join us as we explore the universe!</p>

@@ -51,8 +51,8 @@ export const Header = () => {
       <Logo>The Astronaut's Cycle</Logo>
       <Nav>
         <ul>
-          <li><a href={ INTERNAL_LINKS.HOME }>Home</a></li>
-          <li><a href={ INTERNAL_LINKS.LESSONS }>Lessons</a></li>
+          <li className="fade04"><a href={ INTERNAL_LINKS.HOME }>Home</a></li>
+          <li className="fade04"><a href={ INTERNAL_LINKS.LESSONS }>Lessons</a></li>
         </ul>
       </Nav>
     </HeaderWrapper>
