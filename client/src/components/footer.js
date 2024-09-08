@@ -9,6 +9,7 @@ const FooterContainer = styled.footer`
    background-color: black;
 `
 
+
 const Paragraph = styled.p`
     color: white;
 `
