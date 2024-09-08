@@ -64,8 +64,8 @@ export const Lessons = () => {
         <h1>Simulations:</h1>
       </ContentSection>
       
-      <ContentSection id="runthrough">
-        <Button href="">
+      <ContentSection className="fade04" id="runthrough">
+        <Button href={INTERNAL_LINKS.LESSONONE}>
           Full Runthrough
         </Button>
         <ContentParagraph>
@@ -73,7 +73,7 @@ export const Lessons = () => {
         </ContentParagraph>
       </ContentSection>
 
-      <ContentSection id="section1">
+      <ContentSection className="fade08" id="section1">
         <Button href={INTERNAL_LINKS.LESSONONE}>
           Lesson 1
         </Button>
@@ -82,7 +82,7 @@ export const Lessons = () => {
         </ContentParagraph>
       </ContentSection>
 
-      <ContentSection id="section2">
+      <ContentSection className="fade12" id="section2">
         <Button href={INTERNAL_LINKS.LESSONTWO}>
           Lesson 2
         </Button>
@@ -91,7 +91,7 @@ export const Lessons = () => {
         </ContentParagraph>
       </ContentSection>
 
-      <ContentSection id="section3">
+      <ContentSection  className="fade16" id="section3">
         <Button href={INTERNAL_LINKS.LESSONTHREE}>
           Lesson 3
         </Button>
@@ -100,17 +100,8 @@ export const Lessons = () => {
         </ContentParagraph>
       </ContentSection>
 
-      <ContentSection id="section4">
-        <Button href={INTERNAL_LINKS.LESSONFOUR}>
-          Lesson 4
-        </Button>
-        <ContentParagraph>
-          The final stage of the mission involves re-entering Earth’s atmosphere. Deploy the spacecraft’s heat shield to protect it from the intense heat generated during re-entry.
-        </ContentParagraph>
-      </ContentSection>
-
-      <Footer />
     </MainContainer>
+
   );
 };
 
