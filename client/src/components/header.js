@@ -42,7 +42,7 @@ export const Header = () => {
     return(
         <HeaderContainer>
         <Navbar>
-          <Logo href={INTERNAL_LINKS.HOME}>Logo</Logo>
+          <Logo href={INTERNAL_LINKS.HOME}><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/STS41B-35-1613_-_Bruce_McCandless_II_during_EVA_%28Retouched%29.jpg/800px-STS41B-35-1613_-_Bruce_McCandless_II_during_EVA_%28Retouched%29.jpg" width = "100" height = "100"></img></Logo>
           <NavLinks>
             <NavLinkItem><NavLink href={INTERNAL_LINKS.HOME} >Home</NavLink></NavLinkItem>
             <NavLinkItem><NavLink href={INTERNAL_LINKS.LESSONS} >Lessons</NavLink></NavLinkItem>
