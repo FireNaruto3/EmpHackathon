@@ -1,166 +1,117 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {Header} from '../components/header';
-import {Footer} from '../components/footer';
+import {Header} from '../components/header'; // Adjust the import if needed
+import {Footer} from '../components/footer'; // Adjust the import if needed
 import { INTERNAL_LINKS } from '../utils/links';
 
-
-
-const Navbar = styled.nav`
+// Main container styles
+const MainContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  flex-direction: column;
+  min-height: 100vh;
 `;
 
-const LogoLink = styled.a`
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.5rem;
-  white-space: nowrap;
-`;
-
-const NavLinks = styled.ul`
-  list-style: none;
-  display: flex;
-`;
-
-const NavItem = styled.li`
-  margin-left: 1.5rem;
-`;
-
-const NavLink = styled.a`
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  white-space: nowrap;
-`;
-
-const Toc = styled.section`
-  background: #f4f4f4;
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #333;
-  text-align: center;
-  padding: 2rem;
-`;
-
-const TocContent = styled.div`
-  max-width: 600px;
-`;
-
-const TocHeading = styled.h2`
-  font-size: 2rem;
-  margin-bottom: 1rem;
-`;
-
+// Content sections styles
 const ContentSection = styled.section`
-  padding: 2rem;
-  border-bottom: 1px solid #ddd;
+  padding: 3rem 2rem;
+  border-bottom: 2px solid #ddd;
   text-align: center;
-`;
+  background: #f9f9f9;
 
-const SectionLink = styled.a`
-  text-decoration: none;
+  &:last-of-type {
+    border-bottom: none;
+  }
 `;
 
 const ContentHeading = styled.h2`
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
 `;
 
 const ContentParagraph = styled.p`
+  font-size: 1.1rem;
   margin-top: 1rem;
+  color: #555;
+  line-height: 1.6;
 `;
 
 const Button = styled.a`
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  background: #007BFF;
+  padding: 1rem 2rem;
+  background: #007bff;
   color: #fff;
   text-decoration: none;
   border-radius: 5px;
-  transition: background 0.3s, transform 0.3s;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+  font-size: 1.1rem;
+  font-weight: bold;
 
   &:hover {
     background: #0056b3;
     transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
 `;
 
-
-
 export const Lessons = () => {
   return (
-    <>
-      <Header/>
-      <Toc>
-        <TocContent>
-          <TocHeading>Table of Contents</TocHeading>
-        </TocContent>
-      </Toc>
-
+    <MainContainer>
+      <Header />
+      <ContentSection>
+        <h1>Simulations:</h1>
+      </ContentSection>
+      
       <ContentSection id="runthrough">
-        <SectionLink href="#runthrough">
         <Button href="">
-          <ContentHeading>Full Runthrough</ContentHeading>
+          Full Runthrough
         </Button>
-          <ContentParagraph>
-            Experience the full simulation starting from takeoff to arriving back to earth after a long journey. 
-          </ContentParagraph>
-        </SectionLink>
-        <ContentParagraph></ContentParagraph>
+        <ContentParagraph>
+          Experience the full simulation starting from takeoff to arriving back on Earth.
+        </ContentParagraph>
       </ContentSection>
 
       <ContentSection id="section1">
-        <Button href = {INTERNAL_LINKS.LESSONONE}>
-          <ContentHeading>Lesson 1</ContentHeading>
+        <Button href={INTERNAL_LINKS.LESSONONE}>
+          Lesson 1
         </Button>
         <ContentParagraph>
-          You experience the intense moments of a spacecraft's takeoff. This stage focuses on understanding and managing the effects of G-forces on the human body during launch. Control your body and breathing to ensure you don't pass out!
+          Experience the intense moments of a spacecraft's takeoff. This stage focuses on understanding and managing the effects of G-forces on the human body during launch. Control your body and breathing to ensure you don't pass out!
         </ContentParagraph>
       </ContentSection>
 
       <ContentSection id="section2">
         <Button href={INTERNAL_LINKS.LESSONTWO}>
-          <ContentHeading>Lesson 2</ContentHeading>
+          Lesson 2
         </Button>
         <ContentParagraph>
-          As the spacecraft journeys through the vast expanse of space, you must navigate through a dynamic environment where you must adjust your trajectory to avoid space debris and collision with other spacecraft.
+          As the spacecraft journeys through the vast expanse of space, navigate through a dynamic environment where you must adjust your trajectory to avoid space debris and collisions with other spacecraft.
         </ContentParagraph>
       </ContentSection>
 
       <ContentSection id="section3">
         <Button href="#section3">
-          <ContentHeading>Lesson 3</ContentHeading>
+          Lesson 3
         </Button>
         <ContentParagraph>
-          Upon arrival at the target planet, you must make critical decisions regarding your space suit and whether to proceed with the mission based on the planet’s current weather conditions.
+          Upon arrival at the target planet, make critical decisions regarding your space suit and whether to proceed with the mission based on the planet’s current weather conditions.
         </ContentParagraph>
       </ContentSection>
 
       <ContentSection id="section4">
         <Button href="#section4">
-          <ContentHeading>Lesson 4</ContentHeading>
-        </Button>
-        <ContentParagraph>Content for section 4...</ContentParagraph>
-      </ContentSection>
-
-      <ContentSection id="section5">
-        <Button href="#section5">
-          <ContentHeading>Lesson 5</ContentHeading>
+          Lesson 4
         </Button>
         <ContentParagraph>
-          The final stage of the mission involves re-entering Earth’s atmosphere. You must deploy the spacecraft’s heat shield to protect it from the intense heat generated during re-entry.
+          The final stage of the mission involves re-entering Earth’s atmosphere. Deploy the spacecraft’s heat shield to protect it from the intense heat generated during re-entry.
         </ContentParagraph>
       </ContentSection>
-      <br></br>
-      <Footer/>
-    </>
-  )
+
+      <Footer />
+    </MainContainer>
+  );
 };
+
+

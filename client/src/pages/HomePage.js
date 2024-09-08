@@ -1,79 +1,102 @@
 import React from 'react';
-import styled from 'styled-components';
-import {INTERNAL_LINKS} from '../utils/links.js';
-import {Header} from '../components/header.js'
-import {Footer} from '../components/footer.js'
+import styled, { createGlobalStyle } from 'styled-components';
+import { INTERNAL_LINKS } from '../utils/links';
+import {Header} from '../components/header'; // Adjust the import if needed
+import {Footer} from '../components/footer'; // Adjust the import if needed
 
+// Global Styles
+const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
+  body {
+    line-height: 1.6;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+`;
 
+// Main container styles
+const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
+// Hero section styles
 const Hero = styled.section`
-  background: #f4f4f4;
+  background: url('/path-to-your-background-image.jpg') center/cover no-repeat;
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #333;
   text-align: center;
-  white-space: nowrap;
-  height 100%;
-`
+  padding: 4rem 2rem;
+  padding-top: calc(4rem + 60px); /* Adjusted padding-top to account for header height */
+  min-height: 60vh;
+`;
 
+// Hero content styles
 const HeroContent = styled.div`
-  max-width: 600px;
-`
+  max-width: 700px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 
-const HeroHeading = styled.h2`
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  white-space: nowrap;
-`
+  h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
 
-const HeroParagraph = styled.p`
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  white-space: nowrap;
-`
+  p {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    color: #555;
+  }
+`;
 
-
- const Button = styled.a`
-  background: #007BFF;
+// Button styles
+const Button = styled.a`
+  background: #e74c3c;
   color: #fff;
-  padding: 0.75rem 1.5rem;
+  padding: 0.9rem 2rem;
   text-decoration: none;
   border-radius: 5px;
-  transition: background 0.3s;
-  white-space: nowrap;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  transition: background 0.3s, transform 0.3s;
 
   &:hover {
-    background: #0056b3;
+    background: #c0392b;
+    transform: scale(1.05);
   }
-`
-
-const Section = styled.section`
-    background: #f4f4f4;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #333;
-    text-align: center;
-    white-space: nowrap;
-`
+`;
 
 export const HomePage = () => {
   return (
-    <>
-      <Header/>
+    <MainContainer>
+      <GlobalStyle />
+      <Header />
       <Hero>
         <HeroContent>
-          <HeroHeading>A Day in the Life of an Astronaut</HeroHeading>
-          <HeroParagraph>Our mission: </HeroParagraph>
-          <Button href={INTERNAL_LINKS.LESSONS} class = "btn">Lessons</Button>
+          <h2>The Astronaut's Cycle</h2>
+          <p>Join us as we explore the universe!</p>
+          <Button href={INTERNAL_LINKS.LESSONS}>Start Your Journey</Button>
         </HeroContent>
       </Hero>
-      <Footer/>
-    </>
+      <Footer />
+    </MainContainer>
   );
 };
 

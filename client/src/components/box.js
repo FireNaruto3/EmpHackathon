@@ -2,29 +2,29 @@ import styled from "styled-components";
 
 // Styled container to position the input box
 const InputContainer = styled.div`
-  position: fixed; 
-  bottom: 100px; 
-  left: 50%; 
-  transform: translateX(-50%); 
-  width: 300px; 
+  position: relative; /* Changed from fixed to relative */
+  margin: 0 auto; /* Center horizontally */
+  width: 300px;
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8); /* Optional: Background for better visibility */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-const BoldHeading = styled.h1`
+const Heading = styled.h1`
   font-weight: bold;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
   font-size: 24px;
-  color: #FFFF00; 
-  white-space: nowrap; 
-  <br>
+  color: #00fef4;
+  white-space: nowrap;
 `;
 
-// Styled input box
 const StyledInput = styled.input`
-  width: 100%; 
+  width: 100%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -32,7 +32,6 @@ const StyledInput = styled.input`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   outline: none;
 
-  /* Styles when input is focused */
   &:focus {
     border-color: #007bff;
     box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
@@ -40,7 +39,7 @@ const StyledInput = styled.input`
 `;
 
 const StyledButton = styled.button`
-  margin-top: 10px; 
+  margin-top: 10px;
   padding: 10px 20px;
   font-size: 16px;
   background-color: #007bff;
@@ -61,10 +60,10 @@ const StyledButton = styled.button`
 export const InputBox = () => {
   return (
     <InputContainer>
-      <BoldHeading>Given the radius of the asteroid and the speed of your ship, decide the angle to turn at.</BoldHeading>
-      <StyledInput type="number" placeholder="Enter a number" />
+      <Heading>Given the radius of the asteroid and the speed of your ship, decide the angle to turn at.</Heading>
+      <Heading>Angle:</Heading>
+      <StyledInput type="number" placeholder="Enter speed" />
       <StyledButton>Submit</StyledButton>
     </InputContainer>
-    
   );
 };

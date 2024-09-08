@@ -1,62 +1,62 @@
-import React from "react";
+import React from 'react';
 import styled from 'styled-components';
-import { INTERNAL_LINKS } from '../utils/links.js';
+import { INTERNAL_LINKS } from '../utils/links';
 
-const HeaderContainer = styled.header`
-  background: #333;
-  color: #fff;
-  padding: 1rem 0;
-`
-
-const Navbar = styled.nav`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-`
-
-
-const Logo = styled.a`
-  color: #fff;
-  text-decoration: none;
-  font-size: 1.5rem;
-  white-space: nowrap;
-`
-const NavLinkItem = styled.li`
-  margin-left: 1.5rem;
-`
-
-const NavLinks = styled.ul`
-  list-style: none;
+const HeaderWrapper = styled.header`
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
   display: flex;
-`
-const NavLink = styled.a`
-  color: #fff;
-  text-decoration: none;
-  font-size: 1rem;
-  white-space: nowrap;
-`
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+`;
 
-const hOne = styled.h1`
-  position: relative;
-  text-align: center;
-`
+const Logo = styled.h1`
+  font-size: 24px;
+  margin: 0;
+`;
+
+const Nav = styled.nav`
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  li {
+    margin: 0 15px;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+`;
 
 export const Header = () => {
-    return(
-        <HeaderContainer>
-        <Navbar>
-          <Logo href={INTERNAL_LINKS.HOME}><img src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/STS41B-35-1613_-_Bruce_McCandless_II_during_EVA_%28Retouched%29.jpg/800px-STS41B-35-1613_-_Bruce_McCandless_II_during_EVA_%28Retouched%29.jpg" width = "100" height = "100"></img></Logo>
-          <hOne>Title</hOne>
-          <NavLinks>
-            <NavLinkItem><NavLink href={INTERNAL_LINKS.HOME} >Home</NavLink></NavLinkItem>
-            <NavLinkItem><NavLink href={INTERNAL_LINKS.LESSONS} >Lessons</NavLink></NavLinkItem>
-          </NavLinks>
-        </Navbar>
-     </HeaderContainer>
+  return (
+    <HeaderWrapper>
+      <Logo>The Astronaut's Cycle</Logo>
+      <Nav>
+        <ul>
+          <li><a href={ INTERNAL_LINKS.HOME }>Home</a></li>
+          <li><a href={ INTERNAL_LINKS.LESSONS }>Lessons</a></li>
+        </ul>
+      </Nav>
+    </HeaderWrapper>
+  );
+};
 
-    );
-}
 
