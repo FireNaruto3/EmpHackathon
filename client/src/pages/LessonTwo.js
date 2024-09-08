@@ -124,7 +124,9 @@ export const LessonTwo = () => {
   const [showInfo, setShowInfo] = useState(false);
   let index = 0; 
   index = Math.floor((Math.random()*information.length)); 
-  
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+
 
 
   useEffect(() => {
@@ -197,6 +199,7 @@ export const LessonTwo = () => {
     
     fetchAsteroids()
 
+  
   }, [])
 
       
@@ -212,13 +215,14 @@ export const LessonTwo = () => {
           Find out more about the asteroid!
         </AsteroidButton>
         <Rocket />
-  
+
       </Space>
       <informationBox> 
 
           {showInfo && "Name of the asteroid: " + information[index]["name"] + " Size in meters: " + information[index]["estimated_diameter_max_meters"]}
 
-          {false && information.map((obj) => <p>{obj.name}</p>)} 
+          {false && information.map((obj) => <p>{obj.name}</p>)}
+
         </informationBox>
       <InputBox/>
       <Footer />
