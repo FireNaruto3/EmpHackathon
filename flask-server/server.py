@@ -28,5 +28,18 @@ def get_deaths():
 
     return jsonify({"deaths": data["deaths"]})
 
+
+@app.route('/reset', methods=['POST'])
+def reset():
+    with open(deaths, 'r') as f:
+        data = json.load(f)
+
+        data["deaths"] = 0
+    
+    with open(deaths, 'w') as f:
+        json.dump(data, f)
+
+    return jsonify({"deaths": data["deaths"]})
+
 if __name__ == '__main__':
     app.run(debug=True)
