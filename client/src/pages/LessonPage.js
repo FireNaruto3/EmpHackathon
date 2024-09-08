@@ -92,7 +92,7 @@ export const Lessons = () => {
       </ContentSection>
 
       <ContentSection id="section3">
-        <Button href="#section3">
+        <Button href={INTERNAL_LINKS.LESSONTHREE}>
           Lesson 3
         </Button>
         <ContentParagraph>
@@ -101,7 +101,7 @@ export const Lessons = () => {
       </ContentSection>
 
       <ContentSection id="section4">
-        <Button href="#section4">
+        <Button href={INTERNAL_LINKS.LESSONFOUR}>
           Lesson 4
         </Button>
         <ContentParagraph>

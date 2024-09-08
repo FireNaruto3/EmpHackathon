@@ -1,6 +1,4 @@
-import React from "react";
-
-function getData(){
+export const getData = () =>{
     fetch('/get_asteroid_data', {
         method: 'GET'
     })
@@ -8,8 +6,8 @@ function getData(){
     .then(data => {
         
         console.log("hi i got this far")
+        window.alert('hi')
 
     });
-
 
 }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import '../components/LessonOne.css'; 
-
+import '../components/LessonOne.css'; // Ensure the path is correct
 
 export const LessonOne = () => {
   const [isRectangleVisible, setRectangleVisible] = useState(false);
@@ -10,6 +9,8 @@ export const LessonOne = () => {
   const [counter, setCounter] = useState(0);
   const [timeLeft, setTimeLeft] = useState(30);
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  const [isSuccess, setIsSuccess] = useState(false); // New state for success
   const [isIntroTextVisible, setIntroTextVisible] = useState(true); // New state for intro text
   const [isStartButtonClicked, setStartButtonClicked] = useState(false); // New state to track button click
 
@@ -21,6 +22,8 @@ export const LessonOne = () => {
           if (prevTime <= 1) {
             clearInterval(countdown);
             setModalVisible(true);
+            setModalMessage('Time\'s up or you mistimed your breathing! Please try again.');
+            setIsSuccess(false);
             setBreatheButtonVisible(false);
             setCounterTextVisible(false);
             return 0;
@@ -36,8 +39,8 @@ export const LessonOne = () => {
     const bar = document.querySelector('#blackBar');
     const rectangle = document.querySelector('#redRectangle');
     const barPosition = bar.getBoundingClientRect().left - rectangle.getBoundingClientRect().left;
-    const greenStart = 0.4 * rectangle.offsetWidth;
-    const greenEnd = 0.6 * rectangle.offsetWidth;
+    const greenStart = 0.0 * rectangle.offsetWidth;
+    const greenEnd = 1.0 * rectangle.offsetWidth;
 
     if (timeLeft > 0) {
       if (barPosition >= greenStart && barPosition <= greenEnd) {
@@ -45,7 +48,9 @@ export const LessonOne = () => {
           const newCounter = prevCounter + 1;
           setBreatheText(`Counter: ${newCounter}`);
           if (newCounter >= 10) {
-            alert('Congratulations! You\'ve completed the task.');
+            setModalVisible(true);
+            setModalMessage('Congratulations! You\'ve completed the task.');
+            setIsSuccess(true); // Set success state
             setBreatheButtonVisible(false);
             setCounterTextVisible(false);
           }
@@ -53,6 +58,8 @@ export const LessonOne = () => {
         });
       } else {
         setModalVisible(true);
+        setModalMessage('You mistimed your breathing or ran out of time! Please try again.');
+        setIsSuccess(false); // Set failure state
         setBreatheButtonVisible(false);
       }
     }
@@ -95,10 +102,14 @@ export const LessonOne = () => {
       </section>
 
       {modalVisible && (
-        <div id="timeUpModal" className="modal">
+        <div id="modal" className="modal">
           <div className="modal-content">
-            <p>Time's up or you mistimed your breathing! Please try again.</p>
-            <a href="http://localhost:3000/LessonOne">Try Again</a>
+            <p>{modalMessage}</p>
+            {isSuccess ? (
+              <a href="http://localhost:3000/LessonTwo">Proceed to Next Lesson</a> // Link for success
+            ) : (
+              <a href="http://localhost:3000/LessonOne">Try Again</a> // Link for failure
+            )}
           </div>
         </div>
       )}

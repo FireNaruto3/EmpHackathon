@@ -7,6 +7,8 @@ import {Lessons} from './pages/LessonPage'
 import {NotFound} from './pages/NotFound'
 import {LessonOne} from './pages/LessonOne'
 import {LessonTwo} from './pages/LessonTwo'
+import {LessonThree} from './pages/LessonThree'
+
 
 
 function App() {
@@ -19,6 +21,7 @@ function App() {
         <Route path = {INTERNAL_LINKS.NOTFOUND} element={<NotFound/>} />
         <Route path = {INTERNAL_LINKS.LESSONONE} element = {<LessonOne/>} />
         <Route path = {INTERNAL_LINKS.LESSONTWO} element = {<LessonTwo/>} />
+        <Route path = {INTERNAL_LINKS.LESSONTHREE} element = {<LessonThree/>} />
       </Routes>
     </BrowserRouter>
   );

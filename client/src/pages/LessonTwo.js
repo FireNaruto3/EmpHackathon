@@ -1,9 +1,9 @@
 import React from 'react';
-import {Header} from '../components/header'; 
-import {Footer} from '../components/footer'; 
+import { Header } from '../components/header'; 
+import { Footer } from '../components/footer'; 
 import styled, { keyframes } from 'styled-components';
 import { InputBox } from "../components/box"; 
-
+import { getData } from "../utils/asteroidSize.js";
 
 // Keyframes for animations
 const moveStars = keyframes`
@@ -21,7 +21,8 @@ const Space = styled.div`
   position: relative;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto;   /* Allow vertical scrolling if needed */
   background: radial-gradient(ellipse at center, #000000, #1a1a1a, #000000);
 `;
 
@@ -57,8 +58,6 @@ const Asteroid = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 `;
 
-
-
 // Define keyframes for moving from the right to the middle
 const moveMiddle = keyframes`
   0% {
@@ -83,17 +82,56 @@ const Rocket = styled.div`
   animation: ${moveMiddle} 30s linear;
 `;
 
+const AsteroidButton = styled.button`
+  position: absolute;
+  bottom: 20px; /* Position at the bottom of the asteroid */
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  z-index: 2; /* Ensure it's above the hidden text box */
 
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+// Styled Hidden Text Box
+const HiddenTextBox = styled.div`
+  position: absolute;
+  bottom: 60px; /* Position above the button */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 150px;
+  text-align: center;
+  display: ${props => (props.isVisible ? 'block' : 'none')}; /* Toggle visibility */
+  z-index: 1; /* Ensure it's behind the button */
+`;
 
 // Main component
 export const LessonTwo = () => {
   return (
     <>
-      <Header />
+      <Header/>
       <Space>
         <Stars />
         <Twinkling />
         <Asteroid />
+        <AsteroidButton onClick={getData}>
+          Toggle Info
+        </AsteroidButton>
+        <HiddenTextBox>
+          This is hidden text that appears on button click.
+        </HiddenTextBox>
         <Rocket />
       </Space>
       <InputBox />
@@ -101,5 +139,3 @@ export const LessonTwo = () => {
     </>
   );
 };
-
-

@@ -3,5 +3,6 @@ export const INTERNAL_LINKS = {
     LESSONS: '/Lessons',
     NOTFOUND: '/*',
     LESSONONE: '/LessonOne',
-    LESSONTWO: '/LessonTwo'
+    LESSONTWO: '/LessonTwo',
+    LESSONTHREE: '/LessonThree'
   };
