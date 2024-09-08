@@ -6,6 +6,7 @@ import {Footer} from '../components/footer.js'
 
 
 
+
 const Hero = styled.section`
   background: #f4f4f4;
   flex: 1;
