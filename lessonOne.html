@@ -1,14 +1,254 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleek Homepage</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            display: flex;
+            justify-content: center; 
+            align-items: center; 
+            height: 100%;
+            background-color: #2e8b57; /* Fallback color */
+            background-image: url('background.jpeg');
+            background-size: cover; /* Cover the entire hero section */
+            background-position: center; /* Center the background image */
+            position: relative; 
+        }
+        #redRectangle {
+            width: 90%;
+            max-width: 1200px;
+            height: 100px;
+            background: linear-gradient(to right, 
+                #ff0000 0%, 
+                #ff0000 40%, 
+                #00ff00 40%, 
+                #00ff00 60%, 
+                #ff0000 60%, 
+                #ff0000 100%);
+            display: none; 
+            position: relative; 
+            z-index: 1; 
+        }
+        #blackBar {
+            position: absolute;
+            top: 0; 
+            left: -20px; 
+            width: 20px; 
+            height: 100%; 
+            background-color: #000;
+            animation: moveBar 2s ease-in-out infinite;
+            z-index: 2; 
+        }
+        @keyframes moveBar {
+            0% { left: -10px; }
+            50% { left: calc(100% - 20px); } 
+            100% { left: -10px; } 
+        }
+        #breatheButton {
+            position: absolute;
+            top: calc(50% - 100px); 
+            left: calc(50% - 50px); 
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            z-index: 3; 
+            display: none; 
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        #breatheButton:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+        #breatheText {
+            position: absolute;
+            top: calc(50% - 60px); /* Adjusted to make room for the timer */
+            left: calc(50% - 100px); 
+            color: white;
+            text-align: center;
+            display: block; 
+            width: 200px; 
+            font-size: 14px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .hero-content {
+            z-index: 1; 
+            text-align: center; 
+            color: white;
+        }
+        .text {
+            color: white;
+            font-size: 18px;
+            line-height: 1.5;
+            margin: 0 20px;
+        }
+        .btn {
+            margin-top: 20px; 
+            padding: 12px 24px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        #counterText {
+            position: absolute;
+            top: calc(50% - 20px); /* Position it below the breathe text */
+            left: calc(50% - 50px); 
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            display: block; 
+        }
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Darker background */
+            cursor: not-allowed; /* Prevent interactions */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* Centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Responsive width */
+            max-width: 600px;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
-
 <body>
-    
+    <header class="header">
+        <nav class="navbar">
+            <h1 class="logo"><a href="#">logo here</a></h1>
+            <h1 class="titlepage">Lesson 1 - Exiting Earth</h1>
+            <ul class="nav-links">
+                <li><a href="#">Deaths: </a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <button id="breatheButton">Breathe</button> 
+        <div id="breatheText">Counter: 0</div> 
+        <div id="redRectangle">
+            <div id="blackBar"></div> 
+        </div>
+        <div class="hero-content">
+            <h3 class="text">This stage focuses on learning about the G-forces that astronauts have to face when exiting Earth. In this lesson, you will have to control your breathing to survive the amount of strain put on you. To do this, you will have to click 10 times when the black bar is in the green color. As well as this, you only have 30 seconds. If you fail once, you die. Good luck.</h3>
+            <button class="btn" onclick="showRectangle()">Click Here to Continue</button>
+            <div id="counterText">Time left: 30s</div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p>© 2024 MyWebsite. All rights reserved.</p>
+    </footer>
+
+    <div id="timeUpModal" class="modal">
+        <div class="modal-content">
+            <p>Time's up! Please try again.</p>
+            <a href="lessonOne.html">Try Again</a>
+        </div>
+    </div>
+
+    <script>
+        function showRectangle() {
+            var text = document.querySelector(".text");
+            var button = document.querySelector(".btn");
+            var rectangle = document.getElementById("redRectangle");
+            var breatheButton = document.getElementById("breatheButton");
+            var counterText = document.getElementById("counterText");
+            var breatheText = document.getElementById("breatheText");
+            var modal = document.getElementById("timeUpModal");
+            var blackBar = document.getElementById("blackBar");
+        
+            text.style.display = "none"; 
+            button.style.display = "none"; 
+            rectangle.style.display = "block"; 
+            breatheButton.style.display = "block"; 
+            counterText.style.display = "block"; 
+            breatheText.style.display = "block"; 
+        
+            var timeLeft = 30; // 30 seconds
+            var counter = 0;
+            var barWidth = blackBar.offsetWidth;
+            var greenStart = 0.4 * rectangle.offsetWidth;
+            var greenEnd = 0.6 * rectangle.offsetWidth;
+        
+            counterText.textContent = `Time left: ${timeLeft}s`;
+        
+            var countdown = setInterval(function() {
+                timeLeft--;
+                counterText.textContent = `Time left: ${timeLeft}s`;
+        
+                if (timeLeft <= 0) {
+                    clearInterval(countdown);
+                    counterText.textContent = "Time's up!";
+                    breatheButton.disabled = true;
+                    // Show the modal for time up
+                    modal.style.display = "block";
+                }
+            }, 1000);
+        
+            breatheButton.addEventListener('click', function() {
+                var barPosition = blackBar.getBoundingClientRect().left - rectangle.getBoundingClientRect().left;
+        
+                if (timeLeft > 0) { // Ensure button is only clickable within the time limit
+                    if (barPosition >= greenStart && barPosition + barWidth <= greenEnd) {
+                        counter++;
+                        breatheText.textContent = `Counter: ${counter}`;
+                        
+                        // Check if the counter has reached 10
+                        if (counter >= 10) {
+                            // Show the modal for successful completion
+                            var successModal = document.createElement('div');
+                            successModal.className = 'modal';
+                            successModal.innerHTML = `
+                                <div class="modal-content">
+                                    <p>Congratulations! You've completed the task.</p>
+                                    <a href="nextLesson.html">Continue to Next Lesson</a>
+                                </div>
+                            `;
+                            document.body.appendChild(successModal);
+                            successModal.style.display = "block";
+                            breatheButton.disabled = true; // Disable button to prevent further clicks
+                        }
+                    } else {
+                        // Show the same modal for incorrect clicks
+                        modal.style.display = "block";
+                        // Disable the button to prevent further incorrect clicks
+                        breatheButton.disabled = true;
+                    }
+                }
+            });
+        }
+    </script>
 </body>
-
-
 </html>

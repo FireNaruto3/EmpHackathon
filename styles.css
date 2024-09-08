@@ -5,6 +5,11 @@
     font-family: Arial, sans-serif;
 }
 
+.titlepage {
+    text-align: center;
+    position: relative;
+    
+}
 body {
     line-height: 1.6;
     display: flex;
@@ -62,7 +67,9 @@ body {
 }
 
 .hero-content {
-    max-width: 600px;
+    max-width: 400px;
+    margin-left: 50px;
+    width: 50%;
 }
 
 .hero h2 {
@@ -96,8 +103,197 @@ body {
     color: #fff;
     text-align: center;
     padding: 1rem 0;
-    height: 60px; /* Same height as the header */
-    display: flex;
+    height: 60px;  display: flex;
     justify-content: center;
     align-items: center;
 }
+.text {
+    white-space: normal;
+    word-wrap: break-word;
+    margin-bottom: 100px;
+    color: black;
+}
+#redRectangle {
+    width: 90%;   max-width: 1200px;  height: 100px;
+    background-color: red;
+    position: absolute;   top: 50%; left: 50%; 
+    transform: translate(-50%, -50%); 
+    display: none; 
+    border: 3px solid black;
+}
+#breatheButton {
+    position: absolute;
+    top: 20px; /* Position the button above the rectangle */
+    left: calc(50% - 50px); /* Center the button horizontally above the rectangle */
+    padding: 12px 24px; /* Increased padding for a more substantial button */
+    background: linear-gradient(135deg, #4CAF50, #81C784); /* Green gradient background */
+    color: white; /* White text color */
+    border: none; /* Remove default border */
+    border-radius: 30px; /* Rounded corners */
+    font-size: 16px; /* Larger text */
+    font-weight: bold; /* Bold text for better visibility */
+    cursor: pointer; /* Pointer cursor on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+    transition: background 0.3s, transform 0.2s; /* Smooth transitions for hover effects */
+    z-index: 3; /* Ensure it is above the black bar and rectangle */
+    display: none; /* Initially hide the button */
+}
+
+/* Hover effects */
+#breatheButton:hover {
+    background: linear-gradient(135deg, #66BB6A, #4CAF50); /* Slightly darker green gradient */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+/* Active state effects */
+#breatheButton:active {
+    background: linear-gradient(135deg, #4CAF50, #66BB6A); /* Reverse gradient on click */
+    transform: scale(0.95); /* Slightly shrink the button */
+}
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.hero {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; /* Full viewport height */
+    background-color: #2e8b57; /* Fallback color */
+    background-image: url('background.jpeg');
+    background-size: cover; /* Ensure the image covers the whole section */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent repetition of the image */
+    position: relative; 
+}
+
+/* Other styles remain unchanged */
+#redRectangle {
+    width: 90%;
+    max-width: 1200px;
+    height: 100px;
+    background: linear-gradient(to right, 
+        #ff0000 0%, 
+        #ff0000 40%, 
+        #00ff00 40%, 
+        #00ff00 60%, 
+        #ff0000 60%, 
+        #ff0000 100%);
+    display: none; 
+    position: relative; 
+    z-index: 1; 
+}
+#blackBar {
+    position: absolute;
+    top: 0; 
+    left: -20px; 
+    width: 20px; 
+    height: 100%; 
+    background-color: #000;
+    animation: moveBar 2s ease-in-out infinite;
+    z-index: 2; 
+}
+@keyframes moveBar {
+    0% { left: -10px; }
+    50% { left: calc(100% - 20px); } 
+    100% { left: -10px; } 
+}
+#breatheButton {
+    position: absolute;
+    top: calc(50% - 60px); 
+    left: calc(50% - 50px); 
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    z-index: 3; 
+    display: none; 
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+#breatheButton:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+#breatheText {
+    position: absolute;
+    top: calc(50% - 20px); 
+    left: calc(50% - 100px); 
+    color: white;
+    text-align: center;
+    display: none; 
+    width: 200px; 
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 5px;
+}
+.hero-content {
+    z-index: 1; 
+    text-align: center; 
+    color: white;
+}
+.text {
+    color: white;
+    font-size: 18px;
+    line-height: 1.5;
+    margin: 0 20px;
+}
+.btn {
+    margin-top: 20px; 
+    padding: 12px 24px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+#counterText {
+  
+    position: absolute;
+    top: calc(50% + 20px); /* Position it below the breathe text */
+    left: calc(50% - 50px); 
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    text-align: center;
+    display: none; 
+    border: solid black 2px;
+    background-color: black;
+    border-radius: 2px;
+}
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Darker background */
+    cursor: not-allowed; /* Prevent interactions */
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* Centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Responsive width */
+    max-width: 600px;
+    text-align: center;
+}
+
+
