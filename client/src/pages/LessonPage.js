@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Header = styled.header`
-  background: #333;
-  color: #fff;
-  padding: 1rem 0;
-`;
+import {Header} from '../components/header';
+import {Footer} from '../components/footer';
+import { INTERNAL_LINKS } from '../utils/links';
+
+
 
 const Navbar = styled.nav`
   display: flex;
@@ -93,16 +93,7 @@ const Button = styled.a`
   }
 `;
 
-const Footer = styled.footer`
-  background: #333;
-  color: #fff;
-  text-align: center;
-  padding: 1rem 0;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+
 
 export const Lessons = () => {
   return (
@@ -116,13 +107,18 @@ export const Lessons = () => {
 
       <ContentSection id="runthrough">
         <SectionLink href="#runthrough">
+        <Button href="">
           <ContentHeading>Full Runthrough</ContentHeading>
+        </Button>
+          <ContentParagraph>
+            Experience the full simulation starting from takeoff to arriving back to earth after a long journey. 
+          </ContentParagraph>
         </SectionLink>
         <ContentParagraph></ContentParagraph>
       </ContentSection>
 
       <ContentSection id="section1">
-        <Button href="lessonOne.html">
+        <Button href = {INTERNAL_LINKS.LESSONONE}>
           <ContentHeading>Lesson 1</ContentHeading>
         </Button>
         <ContentParagraph>
@@ -131,7 +127,7 @@ export const Lessons = () => {
       </ContentSection>
 
       <ContentSection id="section2">
-        <Button href="#section2">
+        <Button href={INTERNAL_LINKS.LESSONTWO}>
           <ContentHeading>Lesson 2</ContentHeading>
         </Button>
         <ContentParagraph>
@@ -163,6 +159,7 @@ export const Lessons = () => {
           The final stage of the mission involves re-entering Earth’s atmosphere. You must deploy the spacecraft’s heat shield to protect it from the intense heat generated during re-entry.
         </ContentParagraph>
       </ContentSection>
+      <br></br>
       <Footer/>
     </>
   )
